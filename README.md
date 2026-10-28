@@ -14,7 +14,7 @@ L'ensemble des analyses théoriques et des choix de conception demandés dans le
 
 ## 💻 Le Site Web
 
-Le site vitrine d'abord fait en [maquette figma](./Figma_global_compressé.pdf) a été intégré en **HTML5** et **CSS3** principalement sans framework lourd afin de garantir légèreté, accessibilité et rapidité de chargement.
+Le site vitrine d'abord fait en [maquette figma](./Figma_global_compressé.pdf) a été intégré en **HTML5**, **CSS3** et **JS** principalement sans framework lourd afin de garantir légèreté, accessibilité et rapidité de chargement.
 
 
 
