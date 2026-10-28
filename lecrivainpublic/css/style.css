@@ -1,0 +1,172 @@
+/* L'Écrivain Public, feuille de style (charte graphique globale) */
+:root{
+  --primaire:#AA0000; --secondaire:#F62828; --texte:#fff; --texte-sec:#DBDBDB;
+  --encre:#000; --gris-section:#EAEAEA; --gris-pied:#E1E1E1; --bordure:#A8A8A8;
+  --conteneur:1040px; --rayon:6px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--encre);background:#fff;line-height:1.7;font-size:16px;font-weight:500;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--secondaire);outline-offset:3px}
+.conteneur{width:min(var(--conteneur),100% - 48px);margin-inline:auto}
+
+/* En-tête */
+.entete{background:#fff;text-align:center;padding:16px 0 14px}
+.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:28px;line-height:1}
+.logo img{width:46px;height:auto}
+.menu{display:flex;justify-content:center;gap:22px;margin-top:10px;font-size:14px}
+.menu a{text-decoration:none;position:relative;padding:2px 0}
+.menu a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--secondaire);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.menu a:hover::after,.menu a[aria-current]::after{transform:scaleX(1)}
+.menu a:hover{color:var(--primaire)}
+
+/* Bandeaux (hero) */
+.hero{position:relative;display:grid;place-items:center;text-align:center;color:var(--texte);min-height:520px;overflow:hidden;isolation:isolate;padding:60px 24px}
+.hero--haut{min-height:690px}
+.hero--bas{min-height:460px}
+.hero::before{content:"";position:absolute;inset:-24px;z-index:-2;background:var(--fond,none) center/cover no-repeat #3b3b3b;filter:blur(7px) brightness(.8)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.28))}
+.hero h1{margin:0;font-size:clamp(34px,5vw,56px);line-height:1.05;font-weight:700;text-transform:uppercase}
+.hero p{margin:20px auto 0;max-width:600px;font-size:18px;font-weight:500}
+.hero .contour{color:transparent;-webkit-text-stroke:2px #fff;display:block}
+.hero .contour i{font-style:normal;color:#fff;-webkit-text-stroke:0}
+.hero .bouton{margin-top:58px}
+.hero>div>*{opacity:0;transform:translateY(18px);animation:arrivee .8s var(--ease) forwards}
+.hero>div>*:nth-child(2){animation-delay:.15s}.hero>div>*:nth-child(3){animation-delay:.3s}
+@keyframes arrivee{to{opacity:1;transform:none}}
+
+/* Boutons */
+.bouton{display:inline-block;background:var(--primaire);color:var(--texte);text-decoration:none;text-transform:uppercase;font:500 20px/1 "Montserrat",sans-serif;letter-spacing:.02em;padding:16px 16px;border:0;border-radius:var(--rayon);cursor:pointer;transition:background .25s,transform .25s var(--ease),box-shadow .25s}
+.bouton:hover{background:var(--secondaire);transform:translateY(-3px);box-shadow:0 8px 18px rgba(170,0,0,.3)}
+.bouton:active{transform:translateY(0)}
+.bouton--petit{font-size:18px;padding:10px 14px}
+
+/* Sections de texte */
+.section{padding:70px 0 20px}
+.section+.section{padding-top:40px}
+.titre{margin:0;font-size:clamp(26px,3.4vw,40px);line-height:1.2;font-weight:700;text-transform:uppercase}
+.titre::after,.titre-mixte::after,.sous-titre::after{content:"";display:block;width:200px;max-width:100%;height:2px;background:var(--primaire);margin:14px 0 22px}
+.titre-mixte{margin:0;font-size:clamp(26px,3vw,36px);line-height:1.25;font-weight:700}
+.sous-titre{margin:0;font-size:18px;font-weight:700}
+.sous-titre::after{width:140px;margin:8px 0 16px}
+.section p{margin:0 0 16px;font-size:15px;max-width:980px}
+.centre{text-align:center}.centre .titre::after{margin-inline:auto}
+
+/* Pictogrammes */
+.picto{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 36px;margin:44px 0 30px;text-align:center}
+.picto article{flex:0 1 210px}
+.picto--large article{flex-basis:300px}
+.picto img{height:84px;width:auto;margin:0 auto 18px;object-fit:contain}
+.picto h3{margin:0 0 8px;font-size:14px;font-weight:700}
+.picto p{margin:0 auto;font-size:14px;line-height:1.8}
+
+/* Sections image + panneau gris */
+.duo{display:grid;grid-template-columns:minmax(0,762px) 1fr;margin-top:70px;background:var(--gris-section)}
+.duo--inverse{grid-template-columns:1fr minmax(0,680px)}
+.duo--inverse .duo__photo{order:2}
+.duo__photo{overflow:hidden;min-height:340px}
+.duo__photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.duo:hover .duo__photo img{transform:scale(1.04)}
+.duo__texte{padding:48px clamp(24px,5vw,72px);align-self:center}
+.duo__texte .titre-mixte::after{width:200px}
+.duo__texte p{font-size:14px;margin:0 0 18px;max-width:480px}
+.duo__texte ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.9;max-width:560px}
+.duo__texte li{margin-bottom:6px}
+.espace{height:90px}
+
+/* Avis */
+.avis{display:grid;grid-template-columns:repeat(3,minmax(0,336px));justify-content:space-between;gap:24px;margin:56px 0 90px}
+.carte-avis{border:1px solid var(--bordure);border-radius:16px;padding:20px 18px 24px;min-height:228px;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.carte-avis:hover{transform:translateY(-4px);border-color:var(--primaire);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.carte-avis header{display:flex;align-items:center;gap:14px}
+.carte-avis img.avatar{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.carte-avis b{display:block;font-size:17px;line-height:1.2}.carte-avis time{font-size:9px;display:block}
+.etoiles{display:flex;gap:2px;margin:16px 0 20px}.etoiles img{width:26px;height:26px}
+.carte-avis p{margin:0;font-size:13.5px;line-height:1.6}.carte-avis small{display:block;margin-top:14px;font-size:10px}
+
+/* Livres */
+.livres{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:36px;margin:56px 0 100px}
+.livre{width:227px;border:1px solid #888;border-radius:12px;padding:13px 13px 14px;text-align:center;font-size:14px;line-height:1.7;transition:transform .3s var(--ease),box-shadow .3s}
+.livre:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,.14)}
+.livre img{width:100%;height:auto;border-radius:8px}
+.livre p{margin:12px 0 10px;font-size:14px}
+
+/* Projets */
+.realisations{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:10px 0 90px}
+.realisations article{border:1px solid #8a8a8a;border-radius:14px;padding:20px 22px 14px;transition:border-color .3s,box-shadow .3s}
+.realisations article:hover{border-color:var(--primaire);box-shadow:0 8px 22px rgba(0,0,0,.08)}
+.realisations h3{margin:0 0 6px;font-size:14.5px;font-weight:700}
+.realisations ul{margin:0;padding-left:22px;font-size:14.5px;line-height:1.9}
+.realisations li{margin-bottom:2px}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:40px;margin:40px 0 50px;align-items:start}
+.coordonnees{display:grid;gap:34px;font-size:15px;line-height:1.5}
+.coordonnees div{display:flex;gap:18px;align-items:flex-start}
+.coordonnees img{width:26px;height:26px;flex:none}
+.coordonnees a{color:var(--primaire);font-weight:700;text-decoration:none}
+.coordonnees a:hover{color:var(--secondaire);text-decoration:underline}
+.reseaux{gap:14px!important;padding-left:12px}.reseaux img{width:30px;height:30px;transition:transform .25s var(--ease)}.reseaux a:hover img{transform:scale(1.15)}
+.formulaire{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.formulaire .plein{grid-column:1/-1}
+.formulaire input,.formulaire textarea{width:100%;font:500 15px "Montserrat",sans-serif;padding:8px 10px;border:1px solid #9a9a9a;border-radius:4px;background:#fff;transition:border-color .2s,box-shadow .2s}
+.formulaire input:focus,.formulaire textarea:focus{outline:0;border-color:var(--primaire);box-shadow:0 0 0 3px rgba(246,40,40,.2)}
+.formulaire textarea{min-height:150px;resize:vertical}
+.formulaire .telephone{grid-column:1;max-width:100%}
+.formulaire .envoi{grid-column:1/-1;justify-self:end}
+.statut{grid-column:1/-1;margin:0;font-size:14px;min-height:1.4em}
+.note{margin:0 0 90px;font-size:14px;line-height:2}
+
+/* Politique de confidentialité */
+.legal h1{text-align:center;font-size:clamp(30px,4vw,44px);margin:56px 0 50px;line-height:1.2}
+.legal section{margin-bottom:34px}
+.legal p,.legal li{font-size:14px;line-height:1.7;margin:0 0 4px}
+.legal ul,.legal ol{margin:0;padding-left:22px}
+.legal table{border-collapse:collapse;width:100%;font-size:14px;margin-top:6px}
+.legal th,.legal td{border:1px solid var(--bordure);padding:8px 12px;text-align:left}
+.legal th{background:var(--gris-section)}
+.tableau{overflow-x:auto}
+
+/* Pied de page */
+.pied{background:var(--gris-pied);padding:46px 0 70px;font-size:14px}
+.pied .conteneur{display:grid;grid-template-columns:1.6fr 1fr .8fr;gap:30px;align-items:start}
+.pied .logo{font-size:28px;margin-bottom:10px}
+.pied p{margin:0;max-width:360px;font-weight:400;line-height:1.5}
+.pied h2{margin:6px 0 4px;font-size:24px;font-weight:500;line-height:1.2}
+.pied nav{display:grid;gap:2px}
+.pied a{text-decoration:none;font-weight:500}.pied a:hover{color:var(--primaire);text-decoration:underline}
+.pied address{font-style:normal;font-weight:400;line-height:1.6}
+
+.js .apparait{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .apparait.visible{opacity:1;transform:none}
+
+@media (max-width:860px){
+  .duo,.duo--inverse{grid-template-columns:1fr}.duo--inverse .duo__photo{order:0}
+  .duo__photo{min-height:260px}
+  .avis{grid-template-columns:1fr;justify-items:center}.carte-avis{width:min(100%,420px)}
+  .livres{justify-content:center}
+  .realisations,.contact{grid-template-columns:1fr}
+  .pied .conteneur{grid-template-columns:1fr}
+  .hero--haut{min-height:560px}.hero .bouton{margin-top:36px}
+  .espace{height:50px}
+}
+@media (max-width:520px){
+  .logo{font-size:22px}.logo img{width:36px}
+  .formulaire{grid-template-columns:1fr}.formulaire .telephone{grid-column:1/-1}
+  .bouton{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .hero>div>*,.js .apparait{opacity:1!important;transform:none!important}
+}
+
+.hero--accueil{--fond:url(../images/hero-accueil.jpg)}
+.hero--ecrits{--fond:url(../images/hero-ecrits.jpg)}
+.hero--rse{--fond:url(../images/hero-rse.jpg)}
+.hero--apropos{--fond:url(../images/hero-apropos.png)}
+.hero--contact{--fond:url(../images/hero-contact.png)}
+.hero--projets{--fond:url(../images/hero-projets.png)}
+.hero--ecrits::after{background:rgba(0,0,0,.12)}
