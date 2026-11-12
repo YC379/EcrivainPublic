@@ -1,4 +1,4 @@
-# ✍️ SAE 1.05 – Site Web Vitrine : "L'Écrivain Public"
+# ✍️ SAE 1.05 - Site Web Vitrine : "L'Écrivain Public"
 
 
 Ce dépôt contient le code source du site vitrine responsive **"L'Écrivain Public"** ainsi que le document de cadrage UX/UI réalisé dans le cadre de la **SAE 1.05 (Recueil de besoins et intégration web)**.
